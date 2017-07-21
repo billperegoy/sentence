@@ -11,7 +11,7 @@ pipeline I used to process the data.
    converting each raw string into a %Word{} struct that stored the raw word along
     with any leading and trailing punctuation.
 
-2.I then extracted a raw list of strings (ignoring punctuation) and reversed it.
+2. I then extracted a raw list of strings (ignoring punctuation) and reversed it.
 
 3. I then merged the raw reversed list into the list of word structures. 
 
