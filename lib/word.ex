@@ -24,7 +24,7 @@ defmodule Word do
   """
   def from_string(string) do
     %{"leading" => leading, "word" => word, "trailing" => trailing} =
-    Regex.named_captures(~r/(?<leading>[^a-zA-Z]*)(?<word>[a-zA-Z]*)(?<trailing>[^a-zA-Z]*)/, string)
+      Regex.named_captures(~r/(?<leading>[^a-zA-Z]*)(?<word>[a-zA-Z]*)(?<trailing>[^a-zA-Z]*)/, string)
     %Word{leading: leading, word: word, trailing: trailing}
   end
 
