@@ -32,7 +32,7 @@ defmodule Sentence do
   def get_words(string) do
     string 
       |> String.split(~r/\s+/)
-      |> Enum.map(fn word -> Word.from_string(word) end)
+      |> Enum.map(&Word.from_string(&1))
   end
 
   def reversed_words(words) do

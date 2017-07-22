@@ -34,7 +34,7 @@ defmodule Word do
 
   def merge(words, new_words) do
     zipped = Enum.zip(words, new_words)
-    Enum.map(zipped, fn elem -> update_single_word(elem) end)
+    Enum.map(zipped, &update_single_word(&1))
   end
 
   def update_single_word(item) do
