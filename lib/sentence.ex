@@ -1,10 +1,11 @@
 defmodule Sentence do
   @moduledoc """
-  Documentation for Sentence.
+  Sentence is a code kata I used to teach myself some Elixir.
   """
 
+
   @doc """
-  Reverse Keeping Punctuation
+  Reverse a sentence while keeping punctuation in same relative place
 
   ## Examples
 
@@ -29,12 +30,49 @@ defmodule Sentence do
       |> Word.list_to_string
   end
 
+
+  @doc """
+  Turn a string into a list of Word structs.
+
+  ## Examples
+
+      iex> Sentence.get_words("This is a test")
+      [ %Word{leading: "", word: "This", trailing: ""},
+        %Word{leading: "", word: "is", trailing: ""},
+        %Word{leading: "", word: "a", trailing: ""},
+        %Word{leading: "", word: "test", trailing: ""}
+      ]
+
+      iex> Sentence.get_words("This... is a test.")
+      [ %Word{leading: "", word: "This", trailing: "..."},
+        %Word{leading: "", word: "is", trailing: ""},
+        %Word{leading: "", word: "a", trailing: ""},
+        %Word{leading: "", word: "test", trailing: "."}
+      ]
+
+  """
   def get_words(string) do
     string 
       |> String.split(~r/\s+/)
       |> Enum.map(&Word.from_string(&1))
   end
 
+
+  @doc """
+  Extract the raw list of words from a list of Word structs and reverse it.
+
+  ## Examples
+
+      iex> words =
+      ...> [ %Word{leading: "", word: "This", trailing: "..."},
+      ...>   %Word{leading: "", word: "is", trailing: ""},
+      ...>   %Word{leading: "", word: "a", trailing: ""},
+      ...>   %Word{leading: "", word: "test", trailing: "."}
+      ...> ]
+      iex> Sentence.reversed_words(words)
+      ["test", "a", "is", "This"]
+
+  """
   def reversed_words(words) do
     Word.raw_words(words)
       |> Enum.reverse
